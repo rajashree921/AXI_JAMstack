@@ -6,14 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rajashree921/AXI_JAMstack.git"
-  },
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/rajashree921/AXI_JAMstack/issues"
   },
-  "homepage": "https://github.com/rajashree921/AXI_JAMstack#readme"
+  "homepage": "https://github.com/rajashree921/AXI_JAMstack#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^0.10.0",
+    "core-js": "^3.6.4"
+  }
 }
