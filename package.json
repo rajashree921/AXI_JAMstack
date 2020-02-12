@@ -4,16 +4,17 @@
   "description": "jamstack version of AXImprove LMS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node_modules/.bin/eleventy --serve"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rajashree921/AXI_JAMstack/issues"
-  },
-  "homepage": "https://github.com/rajashree921/AXI_JAMstack#readme",
   "dependencies": {
     "@11ty/eleventy": "^0.10.0",
-    "core-js": "^3.6.4"
+    "axios": "^0.19.2",
+    "core-js": "^3.6.4",
+    "dotenv": "^8.2.0",
+    "faunadb": "^2.11.1",
+    "querystring": "^0.2.0",
+    "shortid": "^2.2.15"
   }
 }
