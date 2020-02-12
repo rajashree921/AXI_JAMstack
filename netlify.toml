@@ -5,6 +5,6 @@
 
 [[redirects]]
     from = "/login/login"
-    to = ".netlify/functions/login"
+    to = "/.netlify/functions/login"
     status = 200
     
