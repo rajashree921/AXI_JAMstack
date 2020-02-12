@@ -16,7 +16,9 @@ module.exports.handler = async event => {
   };
   try {
     const queryResponse = await client.query(
-      q.Create(q.Collection("emp"), page)
+        q.Login(
+          q.Match(q.Index("emp_by_id"), data.empid,
+          { password: data.password }))
     );
     const response = {
       statusCode: 200,
