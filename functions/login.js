@@ -11,14 +11,15 @@ const client = new faunadb.Client({
 
 module.exports.handler = async event => {
   const data = querystring.parse(event.body);
+  console.log(data);
   const page = {
     data: data
   };
   try {
     const queryResponse = await client.query(
-        q.Login(
-          q.Match(q.Index("emp_by_id"), data.empid,
-          { password: data.password }))
+      q.Login(
+        q.Match(q.Index("emp_by_id"), data.empid, { password: data.password })
+      )
     );
     const response = {
       statusCode: 200,
