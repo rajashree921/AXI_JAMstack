@@ -23,13 +23,13 @@ module.exports.handler = async event => {
     );
     const response = {
       statusCode: 200,
-      body: data
+      body: JSON.stringify(queryResponse)
     };
     return response;
   } catch (error) {
     const errorResponse = {
       statusCode: 400,
-      body: JSON.stringify(error)
+      body: data
     };
     return errorResponse;
   }
