@@ -13,13 +13,14 @@ module.exports.handler = async event => {
   const data = querystring.parse(event.body);
   try {
     const queryResponse = await client.query(
-      q.Login(
-        q.Match(q.Index("emp_by_id"), "AXI001", { password: "111111" })
-      )
+      q.Login(q.Match(q.Index("emp_by_id"), data.empid), {
+        password: data.password
+      })
     );
     const response = {
       statusCode: 200,
-      body: data.empid + " " + data.password + " " + JSON.stringify(queryResponse)
+      body:
+        data.empid + " " + data.password + " " + JSON.stringify(queryResponse)
     };
     return response;
   } catch (error) {
