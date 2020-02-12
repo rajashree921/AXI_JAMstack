@@ -2,3 +2,9 @@
     command = "eleventy"
     publish = "_site"
     functions = "functions"
+
+[[redirects]]
+    from = "/login"
+    to = "/functions/login"
+    status = 200
+    
