@@ -1,7 +1,6 @@
 require("dotenv").config();
 const faunadb = require("faunadb");
-const shortid = require("shortid");
-const axios = require("axios");
+const dashboard = require("./dashboard.js");
 const querystring = require("querystring");
 
 const q = faunadb.query;
@@ -21,12 +20,16 @@ module.exports.handler = async event => {
       const queryResponse2 = await client.query(
         q.Get(q.Match(q.Index("emp_by_id"), data.empid))
       );
+      var emp_data = {
+        secret: queryResponse1.secret,
+        uname: queryResponse2.data.FirstName
+      };
       const response = {
         statusCode: 302,
-        body: JSON.stringify(queryResponse1) + JSON.stringify(queryResponse2)
-        /*headers: {
+        body: JSON.stringify(emp_data),
+        headers: {
           Location: `/dashboard`
-        }*/
+        }
       };
       return response;
     } catch (error) {
