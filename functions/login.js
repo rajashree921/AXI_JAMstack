@@ -1,6 +1,6 @@
 require("dotenv").config();
 const faunadb = require("faunadb");
-//const dashboard = require("./dashboard.js");
+const dashboard = require("./dashboard.js");
 const querystring = require("querystring");
 
 const q = faunadb.query;
@@ -26,7 +26,7 @@ module.exports.handler = async event => {
       };
       const response = {
         statusCode: 302,
-        body: JSON.stringify(emp_data),
+        body: JSON.stringify(queryResponse2),
         headers: {
           Location: `/dashboard`
         }
