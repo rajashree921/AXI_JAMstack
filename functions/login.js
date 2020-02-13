@@ -16,6 +16,7 @@ module.exports.handler = async event => {
         password: data.password
       })
     );
+    
     try {
       const queryResponse2 = await client.query(
         q.Get(q.Match(q.Index("emp_by_id"), data.empid))
@@ -26,7 +27,6 @@ module.exports.handler = async event => {
       };
       const response = {
         statusCode: 302,
-        body: JSON.stringify(queryResponse2),
         headers: {
           Location: `/dashboard`
         }
