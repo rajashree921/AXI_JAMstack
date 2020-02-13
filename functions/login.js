@@ -18,24 +18,24 @@ module.exports.handler = async event => {
       })
     );
     try {
-       const queryResponse2 = await client.query(
-          q.Get(q.Match(q.Index("emp_by_id"), data.empid))
-        );
-      } catch (error) {
-        const errorResponse = {
-          statusCode: 400,
-          body: JSON.stringify(error)
-        };
-        return errorResponse;
-      }
-    const response = {
-      statusCode: 302,
-      body: JSON.stringify(queryResponse1) + JSON.stringify(queryResponse2)
-      /*headers: {
-        Location: `/dashboard`
-      }*/
-    };
-    return response;
+      const queryResponse2 = await client.query(
+        q.Get(q.Match(q.Index("emp_by_id"), data.empid))
+      );
+      const response = {
+        statusCode: 302,
+        body: JSON.stringify(queryResponse1) + JSON.stringify(queryResponse2)
+        /*headers: {
+          Location: `/dashboard`
+        }*/
+      };
+      return response;
+    } catch (error) {
+      const errorResponse = {
+        statusCode: 400,
+        body: JSON.stringify(error)
+      };
+      return errorResponse;
+    }
   } catch (error) {
     const errorResponse = {
       statusCode: 400,
