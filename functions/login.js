@@ -24,11 +24,6 @@ module.exports.handler = async event => {
           q.Get(q.Match(q.Index("emp_by_id"), data.empid))
         );
         sessionStorage.setItem("username", queryResponse2.data.FirstName);
-        const response = {
-          statusCode: 201,
-          body: JSON.stringify(queryResponse2)
-        };
-        return response;
       } catch (error) {
         const errorResponse = {
           statusCode: 400,
