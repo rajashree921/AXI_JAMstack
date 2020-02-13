@@ -12,21 +12,47 @@ const client = new faunadb.Client({
 module.exports.handler = async event => {
   const data = querystring.parse(event.body);
   try {
-    const queryResponse = await client.query(
+    const queryResponse1 = await client.query(
       q.Login(q.Match(q.Index("emp_by_id"), data.empid), {
         password: data.password
       })
     );
+    try {
+      sessionStorage.setItem("token", queryResponse.secret);
+      try {
+        const queryResponse2 = await client.query(
+          q.Get(q.Match(q.Index("emp_by_id"), data.empid))
+        );
+        sessionStorage.setItem("username", queryResponse2.data.FirstName);
+        const response = {
+          statusCode: 201,
+          body: JSON.stringify(queryResponse2)
+        };
+        return response;
+      } catch (error) {
+        const errorResponse = {
+          statusCode: 400,
+          body: JSON.stringify(error)
+        };
+        return errorResponse;
+      }
+    } catch (e) {
+      if (e.code == 22) {
+        sessionStorage.clear();
+      }
+    }
     const response = {
-      statusCode: 200,
-      body:
-        data.empid + " " + data.password + " " + JSON.stringify(queryResponse)
+      statusCode: 302,
+      body: JSON.stringify(queryResponse1)
+      /*headers: {
+        Location: `/dashboard`
+      }*/
     };
     return response;
   } catch (error) {
     const errorResponse = {
       statusCode: 400,
-      body: data.empid + " " + data.password + " " + JSON.stringify(error)
+      body: JSON.stringify(error)
     };
     return errorResponse;
   }
