@@ -117,7 +117,8 @@
                   class="col s12"
                   name="signin"
                   method="post"
-                  autocomplete="off"
+				  autocomplete="off"
+				  action="login"
                 >
                   <div class="input-field col s12">
                     <input
@@ -169,33 +170,5 @@
     <script src="/assets/plugins/material-preloader/js/materialPreloader.min.js"></script>
     <script src="/assets/plugins/jquery-blockui/jquery.blockui.js"></script>
     <script src="/assets/js/alpha.min.js"></script>
-    <script>
-            $("form").submit(function(event) {
-
-      const q = faunadb.query;
-      const client = new faunadb.Client({ secret: 'fnADkVsFCMACAgBsi_ZkhOY3tkzdUdBk-W-KolEW' });
-      try {
-          const queryResponse1 = await client.query(
-            q.Login(q.Match(q.Index("emp_by_id"), $(".empid")), {
-              password: $(".pass")
-            })
-          );
-          try {
-            const queryResponse2 = await client.query(
-              q.Get(q.Match(q.Index("emp_by_id"), $(".empid")))
-            );
-            var emp_data = {
-              secret: queryResponse1.secret,
-              uname: queryResponse2.data.FirstName
-            };
-            console.log(emp_data)
-          } catch (error) {
-			  console.error(error);    
-			}
-        } catch (error) {
-			console.error(error);
-        }
-            });
-    </script>
   </body>
 </html>
