@@ -18,8 +18,9 @@ module.exports.handler = async event => {
       })
     );
     try {
-      sessionStorage.setItem("token", queryResponse.secret);
-      try {
+      sessionStorage.setItem("lastname", "Smith");
+      sessionStorage.setItem("token", queryResponse1.secret);
+      /*try {
         const queryResponse2 = await client.query(
           q.Get(q.Match(q.Index("emp_by_id"), data.empid))
         );
@@ -30,7 +31,7 @@ module.exports.handler = async event => {
           body: JSON.stringify(error)
         };
         return errorResponse;
-      }
+      }*/
     } catch (e) {
       if (e.code == 22) {
         alert("Session storage not available");
@@ -39,7 +40,7 @@ module.exports.handler = async event => {
     }
     const response = {
       statusCode: 302,
-      body: JSON.stringify(queryResponse1) + JSON.stringify(queryResponse2)
+      body: JSON.stringify(queryResponse1)// + JSON.stringify(queryResponse2)
       /*headers: {
         Location: `/dashboard`
       }*/
