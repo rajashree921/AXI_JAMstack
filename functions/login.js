@@ -38,12 +38,13 @@ module.exports.handler = async event => {
       }
     } catch (e) {
       if (e.code == 22) {
+        alert("Session storage not available");
         sessionStorage.clear();
       }
     }
     const response = {
       statusCode: 302,
-      body: JSON.stringify(queryResponse1)
+      body: JSON.stringify(queryResponse1) + JSON.stringify(queryResponse2)
       /*headers: {
         Location: `/dashboard`
       }*/
