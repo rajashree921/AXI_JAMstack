@@ -173,17 +173,27 @@
       $(document).ready(function () {
         $("form").submit(function (e) {
           e.preventDefault();
-          var formData = new FormData();
-          formData.append("empid", $("#empid").val());
-          formData.append("password", $("#password").val());
-          var xhr = new XMLHttpRequest();
-          xhr.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-              console.log(this.response);
+          // var form = document.querySelector("form");
+          // var formData = new FormData(form);
+          // var xhr = new XMLHttpRequest();
+          // xhr.onreadystatechange = function () {
+          //   if (this.readyState == 4 && this.status == 200) {
+          //     console.log(this.response);
+          //   }
+          // };
+          // xhr.open("POST", "/.netlify/functions/login", true);
+          // xhr.send(formData);
+
+          $.post(
+            "/.netlify/functions/login",
+            {
+              empid: $('#empid').val(),
+              password: $('#password').val(),
+            },
+            function (data, status) {
+              alert("Data: " + data + "\nStatus: " + status);
             }
-          };
-          xhr.open("POST", "/.netlify/functions/login", true);
-          xhr.send(formData);
+          );
         });
       });
     </script>
