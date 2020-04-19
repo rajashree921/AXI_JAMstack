@@ -91,21 +91,13 @@
       />
       &nbsp;&nbsp;&nbsp;
       <a
-<<<<<<< HEAD
-        style="font-size: 22px;"
-=======
         style="font-size:22px"
->>>>>>> ce1375539a21a7fcbbdb8ee95a29e3d097fdf8fc
         href="/index.html"
         class="hide-on-small-and-down"
         id="title"
         >LEAVE MANAGEMENT SYSTEM</a
       >
-<<<<<<< HEAD
-      <a style="font-size: 22px;" href="/index.html" class="hide-on-med-and-up"
-=======
       <a style="font-size:22px" href="/index.html" class="hide-on-med-and-up"
->>>>>>> ce1375539a21a7fcbbdb8ee95a29e3d097fdf8fc
         >L M S</a
       >
     </nav>
@@ -116,11 +108,7 @@
             <div class="card-content">
               <span
                 class="card-title"
-<<<<<<< HEAD
-                style="text-align: center; font-size: 20px;"
-=======
                 style="text-align:center; font-size:20px;"
->>>>>>> ce1375539a21a7fcbbdb8ee95a29e3d097fdf8fc
                 >Employee Login</span
               >
               <!--<div class="errorWrap"><strong>Error</strong> : </div> -->
@@ -128,14 +116,8 @@
                 <form
                   class="col s12"
                   name="signin"
-<<<<<<< HEAD
                   action="#"
                   autocomplete="off"
-=======
-                  method="post"
-				  autocomplete="off"
-				  action="login"
->>>>>>> ce1375539a21a7fcbbdb8ee95a29e3d097fdf8fc
                 >
                   <div class="input-field col s12">
                     <input
@@ -152,11 +134,7 @@
                   </div>
                   <div class="input-field col s12">
                     <input
-<<<<<<< HEAD
                       id="password"
-=======
-                      id="pass"
->>>>>>> ce1375539a21a7fcbbdb8ee95a29e3d097fdf8fc
                       placeholder="Password"
                       type="password"
                       name="password"
@@ -167,19 +145,11 @@
                     <a
                       class="waves-effect waves-grey"
                       href="forgot-password.php"
-<<<<<<< HEAD
                       style="text-align: bottom;"
                       >Forgot Password?</a
                     >
                     <button
                       id="submit"
-=======
-                      style="text-align:bottom"
-                      >Forgot Password?</a
-                    >
-                    <button
-                      type="submit"
->>>>>>> ce1375539a21a7fcbbdb8ee95a29e3d097fdf8fc
                       class="waves-effect waves-light btn right teal"
                     >
                       Sign In
@@ -199,7 +169,6 @@
     <script src="/assets/plugins/material-preloader/js/materialPreloader.min.js"></script>
     <script src="/assets/plugins/jquery-blockui/jquery.blockui.js"></script>
     <script src="/assets/js/alpha.min.js"></script>
-<<<<<<< HEAD
     <script>
       $(document).ready(function () {
       $("#submit").click(function () {
@@ -210,7 +179,7 @@
       xhr.addEventListener("load", transferComplete, false);
       xhr.addEventListener("error", transferFailed, false);
       xhr.addEventListener("abort", transferCanceled, false);
-      xhr.open('POST', '/login/login', true);
+      xhr.open('POST', '/.netlify/functions/login', true);
       xhr.send(formData);
       function transferComplete(evt) { // stylized upload complete
       console.log(evt);
@@ -224,7 +193,5 @@
       });
       });
     </script>
-=======
->>>>>>> ce1375539a21a7fcbbdb8ee95a29e3d097fdf8fc
   </body>
 </html>

@@ -179,7 +179,7 @@
       xhr.addEventListener("load", transferComplete, false);
       xhr.addEventListener("error", transferFailed, false);
       xhr.addEventListener("abort", transferCanceled, false);
-      xhr.open('POST', '/login/login', true);
+      xhr.open('POST', '/.netlify/functions/login', true);
       xhr.send(formData);
       function transferComplete(evt) { // stylized upload complete
       console.log(evt);
