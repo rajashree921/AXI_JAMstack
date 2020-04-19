@@ -171,11 +171,11 @@
     <script src="/assets/js/alpha.min.js"></script>
     <script>
       $(document).ready(function () {
-        $("form").click(function (e) {
+        $("form").submit(function (e) {
           e.preventDefault();
           var formData = new FormData();
-          formData.append("empid", $("#empid"));
-          formData.append("password", $("#password"));
+          formData.append("empid", $("#empid").val());
+          formData.append("password", $("#password").val());
           var xhr = new XMLHttpRequest();
           xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
