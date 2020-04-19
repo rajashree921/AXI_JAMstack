@@ -5,44 +5,43 @@ const querystring = require("querystring");
 
 const q = faunadb.query;
 const client = new faunadb.Client({
-  secret: process.env.FAUNADB
+  secret: process.env.FAUNADB,
 });
 
-module.exports.handler = async event => {
+module.exports.handler = async (event) => {
   const data = querystring.parse(event.body);
   try {
     const queryResponse1 = await client.query(
       q.Login(q.Match(q.Index("emp_by_id"), data.empid), {
-        password: data.password
+        password: data.password,
       })
     );
-    
+
     try {
       const queryResponse2 = await client.query(
         q.Get(q.Match(q.Index("emp_by_id"), data.empid))
       );
       var emp_data = {
-        secret: queryResponse1.secret,
-        uname: queryResponse2.data.FirstName
+        qR1: queryResponse1,
+        qR2: queryResponse2,
       };
       const response = {
-        statusCode: 302,
-        headers: {
-          Location: `/dashboard`
-        }
+        statusCode: 201,
+        body: emp_data,
       };
       return response;
     } catch (error) {
       const errorResponse = {
         statusCode: 400,
-        body: JSON.stringify(error) + "error2"
+        body: JSON.stringify(error) + "error2",
       };
       return errorResponse;
     }
   } catch (error) {
     const errorResponse = {
       statusCode: 400,
-      body: JSON.stringify(error) + " error1 " + data.empid + " " + data.password
+      body:
+        JSON.stringify(error) + " error1 " + data.empid + " " + data.password,
     };
     return errorResponse;
   }
