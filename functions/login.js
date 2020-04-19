@@ -26,7 +26,8 @@ module.exports.handler = async event => {
         uname: queryResponse2.data.FirstName
       };
       const response = {
-        statusCode: 201
+        statusCode: 201,
+        body: JSON.stringify(queryResponse1) + JSON.stringify(queryResponse2)
       };
       return response;
     } catch (error) {
