@@ -149,7 +149,7 @@
                       >Forgot Password?</a
                     >
                     <button
-                      id="submit"
+                      type="submit"
                       class="waves-effect waves-light btn right teal"
                     >
                       Sign In
@@ -171,7 +171,8 @@
     <script src="/assets/js/alpha.min.js"></script>
     <script>
       $(document).ready(function () {
-        $("#submit").click(function () {
+        $("form").click(function (e) {
+          e.preventDefault();
           var formData = new FormData();
           formData.append("empid", $("#empid"));
           formData.append("password", $("#password"));
