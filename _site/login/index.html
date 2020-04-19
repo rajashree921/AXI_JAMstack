@@ -91,13 +91,13 @@
       />
       &nbsp;&nbsp;&nbsp;
       <a
-        style="font-size:22px"
+        style="font-size: 22px;"
         href="/index.html"
         class="hide-on-small-and-down"
         id="title"
         >LEAVE MANAGEMENT SYSTEM</a
       >
-      <a style="font-size:22px" href="/index.html" class="hide-on-med-and-up"
+      <a style="font-size: 22px;" href="/index.html" class="hide-on-med-and-up"
         >L M S</a
       >
     </nav>
@@ -108,7 +108,7 @@
             <div class="card-content">
               <span
                 class="card-title"
-                style="text-align:center; font-size:20px;"
+                style="text-align: center; font-size: 20px;"
                 >Employee Login</span
               >
               <!--<div class="errorWrap"><strong>Error</strong> : </div> -->
@@ -171,26 +171,19 @@
     <script src="/assets/js/alpha.min.js"></script>
     <script>
       $(document).ready(function () {
-      $("#submit").click(function () {
-      var formData = new FormData();
-      formData.append('empid', $('#empid'));
-      formData.append('password', $('#password'));
-      var xhr = new XMLHttpRequest();
-      xhr.addEventListener("load", transferComplete, false);
-      xhr.addEventListener("error", transferFailed, false);
-      xhr.addEventListener("abort", transferCanceled, false);
-      xhr.open('POST', '/.netlify/functions/login', true);
-      xhr.send(formData);
-      function transferComplete(evt) { // stylized upload complete
-      console.log(evt);
-      }
-      function transferFailed(evt) {
-      console.log(evt);
-      }
-      function transferCanceled(evt) {
-      console.log(evt);
-      }
-      });
+        $("#submit").click(function () {
+          var formData = new FormData();
+          formData.append("empid", $("#empid"));
+          formData.append("password", $("#password"));
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              console.log(this.response);
+            }
+          };
+          xhr.open("POST", "/.netlify/functions/login", true);
+          xhr.send(formData);
+        });
       });
     </script>
   </body>
