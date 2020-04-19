@@ -42,7 +42,7 @@ module.exports.handler = async event => {
   } catch (error) {
     const errorResponse = {
       statusCode: 400,
-      body: JSON.stringify(error) + "error1"
+      body: JSON.stringify(error) + " error1 " + data.empid + " " + data.password
     };
     return errorResponse;
   }
