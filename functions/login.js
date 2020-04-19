@@ -35,14 +35,14 @@ module.exports.handler = async event => {
     } catch (error) {
       const errorResponse = {
         statusCode: 400,
-        body: JSON.stringify(error)
+        body: JSON.stringify(error) + "error2"
       };
       return errorResponse;
     }
   } catch (error) {
     const errorResponse = {
       statusCode: 400,
-      body: JSON.stringify(error)
+      body: JSON.stringify(error) + "error1"
     };
     return errorResponse;
   }
