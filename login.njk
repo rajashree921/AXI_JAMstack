@@ -185,8 +185,9 @@
           // xhr.send(formData);
 
           $.post(
-            "/.netlify/functions/login",
+            "/.netlify/functions/fauna",
             {
+              action: "login",
               empid: $('#empid').val(),
               password: $('#password').val(),
             },

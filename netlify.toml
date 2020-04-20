@@ -2,9 +2,4 @@
     command = "eleventy"
     publish = "_site"
     functions = "functions"
-
-[[redirects]]
-    from = "/login/login"
-    to = "/.netlify/functions/login"
-    status = 200
     
