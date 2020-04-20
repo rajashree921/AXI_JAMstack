@@ -9,8 +9,8 @@ const client = new faunadb.Client({
 
 module.exports.handler = async (event) => {
   const data = querystring.parse(event.body);
-  switch (data.action) {
-    case "login":
+  // switch (data.action) {
+  //   case "login":
       try {
         const queryResponse1 = await client.query(
           q.Login(q.Match(q.Index("emp_by_id"), data.empid), {
@@ -54,14 +54,15 @@ module.exports.handler = async (event) => {
             data.password,
         };
         return errorResponse;
-      } finally {
-        break;
-      }
-    default:
-      const errorResponse = {
-        statusCode: 400,
-        body: "default case",
-      };
-      return errorResponse;
-  }
+       } 
+  //finally {
+  //       break;
+  //     }
+  //   default:
+  //     const errorResponse = {
+  //       statusCode: 400,
+  //       body: "default case",
+  //     };
+  //     return errorResponse;
+  // }
 };
