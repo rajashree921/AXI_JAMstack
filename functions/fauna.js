@@ -25,15 +25,12 @@ module.exports.handler = async (event) => {
           const queryResponse2 = await user_client.query(
             q.Get(q.Match(q.Index("emp_by_id"), data.empid))
           );
-          const user_client1 = new faunadb.Client({
-            secret: queryResponse1.secret,
-          });
-          const queryResponse3 = await user_client1.query(
-            q.Get(q.Match(q.Index("emp_by_id"), data.empid))
-          );
           const response = {
             statusCode: 201,
-            body: /*JSON.stringify(queryResponse2) +*/ JSON.stringify(queryResponse3),
+            body: JSON.stringify({
+              secret: queryResponse1.secret,
+              name: queryResponse2.data.FirstName,
+            }),
           };
           return response;
         } catch (error) {
@@ -54,8 +51,7 @@ module.exports.handler = async (event) => {
             data.password,
         };
         return errorResponse;
-       } 
-  finally {
+      } finally {
         break;
       }
     default:

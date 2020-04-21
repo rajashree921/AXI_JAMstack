@@ -1,0 +1,154 @@
+{% set page_title = "Apply Leave" %} 
+{% extends "layout/base_user.njk"%} 
+{% block content%}
+<main class="mn-inner">
+  <div class="row">
+    <div class="col s12 m12 l8">
+      <div class="card">
+        <div class="card-content">
+          <h4 style="text-align: center;">Apply for Leave</h4>
+          <form id="addl" method="post" name="addemp">
+            <div class="row">
+              <div class="col m12">
+                <div class="row" style="text-align: center;">
+                  <div class="input-field col s12">
+                    <select name="leavetype" id="leavetype" autocomplete="off">
+                      <option value="" selected disabled
+                        >Select leave type...</option
+                      >
+                      <option>Medical Leave</option>
+                    </select>
+                  </div>
+                  <div class="input-field col m6 s12">
+                    <label for="fromdate" class="active">From Date</label>
+                    <input
+                      value="2020-04-22"
+                      min="2020-04-22"
+                      name="fromdate"
+                      id="fromdate"
+                      type="date"
+                      required
+                      autofocus
+                    />
+                  </div>
+                  <div class="input-field col m6 s12">
+                    <label for="todate" class="active">To Date</label>
+                    <input
+                      value="2020-04-22"
+                      min="2020-04-22"
+                      name="todate"
+                      id="todate"
+                      type="date"
+                      required
+                    />
+                  </div>
+                  <div
+                    class="preloader-wrapper small active"
+                    id="loaderIcon"
+                    style="display: none;"
+                  >
+                    <div class="spinner-layer spinner-green-only">
+                      <div class="circle-clipper left">
+                        <div class="circle"></div>
+                      </div>
+                      <div class="gap-patch">
+                        <div class="circle"></div>
+                      </div>
+                      <div class="circle-clipper right">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <span
+                    id="leave-availability"
+                    style="font-size: 12px; color: red;"
+                  ></span>
+                  <div class="input-field col m12 s12">
+                    <label for="description">Description</label>
+                    <textarea
+                      id="textarea1"
+                      name="description"
+                      class="materialize-textarea"
+                      length="500"
+                    ></textarea>
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  name="apply"
+                  id="apply"
+                  class="waves-effect waves-light btn indigo m-b-xs right"
+                >
+                  Apply
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %} 
+{% block add_scripts %}
+<script>
+  $(document).ready(function(){
+    $(document).on('submit', '#addl', function(){
+      var valid=true;
+      if(!$("#leavetype").val()){
+        alert('Please select Leave Type');
+        valid=false;
+      }
+      $("#leave-availability").html("");
+      if((new Date($("#fromdate").val()))>(new Date($("#todate").val()))){
+        $("#leave-availability").html("FromDate cannot be greater than ToDate");
+        valid=false;
+      }
+      var d1=new Date($("#fromdate").val()),
+        d2=new Date($("#todate").val()),
+        isWeekend = false;
+      //valid=true;
+      while(d1<=d2) {
+        var day = d1.getDay();
+        //alert(day);
+        isWeekend = (day === 6) || (day === 0);
+        if (isWeekend){
+          valid=false;
+          $("#leave-availability").html("Leave period includes weekend, please select another interval");
+          break;
+        }
+        d1.setDate(d1.getDate() + 1);
+      }
+      var days=(Date.parse($("#todate").val()) - Date.parse($("#fromdate").val())) / 86400000 + 1;
+      {# if(days>4){
+        function setvalid(val){
+          valid=(val=='true');
+        }
+        $("#loaderIcon").show();
+        $.ajax({
+          url: "check.php",
+          data:{fromdate:$("#fromdate").val(),
+              id:'<?php echo $_SESSION['emplogin']?>'
+              },
+          type: "POST",
+          success:function(data){
+            if(data=="YES"){
+              $("#leave-availability").html("You have already taken long leave this year<br>Cannot take leave for more than 4 days at a time");
+              setvalid('false');
+            }
+          },
+          error:function(error){
+            console.log(error);
+          }
+        });
+        $("#loaderIcon").hide();
+      } #}
+      if(days>10){
+        $("#leave-availability").html("Cannot take leave for longer than 10 days");
+        valid=false;
+      }
+      return valid;
+    });
+  });
+</script>
+{% endblock %}

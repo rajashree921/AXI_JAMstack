@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!-- Title -->
-    <title>Home</title>
+    <title>Leave History</title>
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -23,7 +23,7 @@
       rel="stylesheet"
     />
     
-<link href="/assets/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet">
+<link href="assets/plugins/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
  
     <!-- Theme Styles -->
     <link href="/assets/css/alpha.min.css" rel="stylesheet" type="text/css" />
@@ -163,11 +163,41 @@
   </aside>
       
 <main class="mn-inner">
-
-<input type="month" id="getmonth" min='2019-01' value='2020-02' style="display:none">
-<div class="card">
-  <div id="calendar"></div>
-</div>
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <div class="card">
+        <div class="card-content">
+          <h4 style="text-align: center;">Leave History: AXI00x</h4>
+          <table id="example" class="display responsive-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th width="120">Leave Type</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Description</th>
+                <th width="200">Comments</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Medical Leave</td>
+                <td>2020-04-10</td>
+                <td>2020-04-15</td>
+                <td>Sick Leave</td>
+                <td>None</td>
+                <td>
+                  <span style="color: blue;">waiting for approval</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 
     </div>
@@ -177,39 +207,8 @@
     <script src="/assets/plugins/jquery-blockui/jquery.blockui.js"></script>
     <script src="/assets/js/alpha.min.js"></script>
     
-<script src="/assets/plugins/fullcalendar/moment.min.js"></script>
-<script src="/assets/plugins/fullcalendar/fullcalendar.min.js"></script>
-<script>
-  $(document).ready(function(){
-    $('#calendar').fullCalendar({
-      editable:false,
-      height: 500,
-      customButtons: {
-        myButton: {
-          text: 'Jump to Date',
-          click: function(){
-            $('#getmonth').toggle();
-          }
-        }
-      },
-      header:{
-        left: 'myButton',
-        center: 'title',
-        right: 'prevYear, prev, today, next, nextYear'
-      },
-      events: [{
-        'id':"10",
-        'title':"Sick Leave",
-        'start':"2020-04-10",
-        'end':"2020-04-15",
-        'backgroundColor':"green",
-      }],
-    });
-    $('#getmonth').change(function() {
-      $('#calendar').fullCalendar( 'gotoDate', this.value )
-    });
-  });
-</script>
+<script src="/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/assets/js/pages/table-data.js"></script>       
 
   </body>
 </html>

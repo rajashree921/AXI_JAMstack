@@ -1,0 +1,67 @@
+<aside id="slide-out" class="side-nav white fixed">
+    <div class="side-nav-wrapper">
+      <div class="sidebar-profile">
+        <div class="sidebar-profile-image">
+        {% set gender = "M" %}
+        {% if gender == "M" %}
+          <img
+            src="/assets/images/m.png"
+            alt="Male-Photo"
+          />
+        {% elif gender == "F" %}
+           <img
+            src="/assets/images/f.png"
+            alt="Female-Photo"
+          />
+        {% else %}
+           <img
+            src="assets/images/o.png"
+            alt="Gender-Neutral-Photo"
+          />
+        {% endif %}
+        </div>
+        <div class="sidebar-profile-info">
+          <p id="name">
+            Name
+          </p>
+          <span id="emp-id">AXI00X</span>        
+        </div>
+      </div>
+      <ul
+        class="sidebar-menu collapsible collapsible-accordion"
+        data-collapsible="accordion"
+      >
+        <li class="no-padding">
+          <a class="waves-effect waves-grey" href="/home"
+            ><i class="material-icons">home</i>Home</a
+          >
+        </li>
+        <li class="no-padding">
+          <a href="/myprofile"
+            ><i class="material-icons">account_box</i>My Profile</a
+          >
+        </li>
+        <li class="no-padding">
+          <a class="collapsible-header"
+            ><i class="material-icons">apps</i>Leaves<i
+              class="nav-drop-icon material-icons"
+              >keyboard_arrow_right</i
+            ></a
+          >
+          <div class="collapsible-body">
+            <ul>
+              <li><a href="/apply-leave">Apply Leave</a></li>
+              <li><a href="/leave-history">Leave History</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="no-padding">
+          <a href="#">
+            <i class="material-icons">exit_to_app</i>
+            Sign Out
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>

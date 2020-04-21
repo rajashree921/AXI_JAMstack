@@ -1,0 +1,155 @@
+{% set page_title = "Profile" %}
+{% extends "layout/base_user.njk"%}
+{% block content%}
+<main class="mn-inner">
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <div class="card">
+        <div class="card-content">
+          <div>
+            <h3 style="text-align: center;">Employee Info</h3>
+            <br />
+            <section>
+              <div class="row">
+                <div class="col m6">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <label for="empcode">Employee Code</label>
+                      <input
+                        name="empcode"
+                        id="empcode"
+                        value="AXIxxx"
+                        type="text"
+                        readonly
+                      />
+                    </div>
+
+                    <div class="input-field col m6 s12">
+                      <label for="firstName">First name</label>
+                      <input
+                        id="firstName"
+                        name="firstName"
+                        value="FirstName"
+                        type="text"
+                        readonly
+                      />
+                    </div>
+
+                    <div class="input-field col m6 s12">
+                      <label for="lastName">Last name </label>
+                      <input
+                        id="lastName"
+                        name="lastName"
+                        value="LastName"
+                        type="text"
+                        readonly
+                      />
+                    </div>
+
+                    <div class="input-field col s12">
+                      <label for="email">Email</label>
+                      <input
+                        name="email"
+                        type="email"
+                        id="email"
+                        value="EmailId"
+                        readonly
+                        readonly
+                      />
+                    </div>
+
+                    <div class="input-field col s12">
+                      <label for="phone">Mobile number</label>
+                      <input
+                        id="phone"
+                        name="mobileno"
+                        type="tel"
+                        value="Phonenumber"
+                        maxlength="10"
+                        readonly
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col m6">
+                  <div class="row">
+                    <div class="input-field col m6 s12">
+                      <label for="gender" class="active">Gender</label>
+                      <input
+                        id="gender"
+                        name="gender"
+                        type="text"
+                        value="Unspecified"
+                        readonly
+                      />
+                    </div>
+                    <div class="input-field col m6 s12">
+                      <label for="birthdate" class="active"
+                        >Date of Birth</label
+                      >
+                      <input
+                        id="birthdate"
+                        name="dob"
+                        value="dd/mm/yyyy"
+                        readonly
+                      />
+                    </div>
+                    <div class="input-field col m6 s12">
+                      <label for="department" class="active">Department</label>
+                      <input
+                        id="department"
+                        name="department"
+                        type="text"
+                        value="Department"
+                        readonly
+                      />
+                    </div>
+                    <div class="input-field col m6 s12">
+                      <label for="address">Address</label>
+                      <input
+                        id="address"
+                        name="address"
+                        type="text"
+                        value="Address"
+                        readonly
+                      />
+                    </div>
+
+                    <div class="input-field col m6 s12">
+                      <label for="city">City/Town</label>
+                      <input
+                        id="city"
+                        name="city"
+                        type="text"
+                        value="City"
+                        readonly
+                      />
+                    </div>
+
+                    <div class="input-field col m6 s12">
+                      <label for="country">Country</label>
+                      <input
+                        id="country"
+                        name="country"
+                        type="text"
+                        value="Country"
+                        readonly
+                      />
+                    </div>
+                  </div>
+                  <a
+                    class="waves-effect waves-light indigo-text btn-flat right"
+                    href="/emp-changepassword"
+                    >Change Password</a
+                  >
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

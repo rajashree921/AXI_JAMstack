@@ -1,0 +1,48 @@
+{% set page_title = "Leave History" %} 
+{% extends "layout/base_user.njk"%} 
+{% block add_css %}
+<link href="assets/plugins/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+{% endblock %}
+{% block content%}
+<main class="mn-inner">
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <div class="card">
+        <div class="card-content">
+          <h4 style="text-align: center;">Leave History: AXI00x</h4>
+          <table id="example" class="display responsive-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th width="120">Leave Type</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Description</th>
+                <th width="200">Comments</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Medical Leave</td>
+                <td>2020-04-10</td>
+                <td>2020-04-15</td>
+                <td>Sick Leave</td>
+                <td>None</td>
+                <td>
+                  <span style="color: blue;">waiting for approval</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %} 
+{% block add_scripts %}
+<script src="/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="/assets/js/pages/table-data.js"></script>       
+{% endblock %}
