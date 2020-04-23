@@ -22,17 +22,17 @@ module.exports.handler = async (event) => {
         });
         user_client.query(
           q.Get(q.Match(q.Index("emp_id"), data.empid))
-        )
-        .then(function(emp_resp){
-          const emp_respon = {
-            statusCode: 201,
-            body: JSON.stringify({
-              secret: emp_res.secret,
-              name: emp_resp.data.name,
-            }),
-          };
-          return emp_respon;
-        })
+        )        
+      })
+      .then(function(emp_resp){
+        const emp_respon = {
+          statusCode: 201,
+          body: JSON.stringify({
+            secret: emp_res.secret,
+            name: emp_resp.data.name,
+          }),
+        };
+        return emp_respon;
       })
       .catch(function(error){
         const errorResponse1 = {
@@ -55,16 +55,17 @@ module.exports.handler = async (event) => {
         admin_client.query(
           q.Get(q.Match(q.Index("admin_id"), data.empid))
         )
-        .then(function(admin_respo){
-          const admin_response = {
-            statusCode: 201,
-            body: JSON.stringify({
-              secret: admin_res.secret,
-              data: admin_respo.data
-            }),
-          };
-          return admin_response;
-        })
+        
+      })
+      .then(function(admin_respo){
+        const admin_response = {
+          statusCode: 201,
+          body: JSON.stringify({
+            secret: admin_res.secret,
+            data: admin_respo.data
+          }),
+        };
+        return admin_response;
       })
       .catch(function(error){
         const errorResponse2 = {
