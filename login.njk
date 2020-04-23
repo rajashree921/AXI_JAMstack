@@ -181,10 +181,10 @@
             function (data, status) {
               console.log(data);
               {# sessionStorage.setItem("fauna_emp_secret",data.secret);
-              sessionStorage.setItem("name",data.name); #}
+              sessionStorage.setItem("name",data.name);
               if (status==="success"){
                 window.location.href=  "../home";
-              }
+              } #}
             }
           );
         });
