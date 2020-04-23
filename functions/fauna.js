@@ -17,22 +17,29 @@ module.exports.handler = async (event) => {
         })
       )
       .then(function(res){
-        const user_client = new faunadb.Client({
-          secret: res.secret,
-        });
-        user_client.query(
-          q.Get(q.Match(q.Index("emp_id"), data.empid))
-        )
-        .then(function(resp){
-          const respon = {
-            statusCode: 201,
-            body: JSON.stringify({
-              secret: res.secret,
-              name: resp.data.name,
-            }),
-          };
-          return respon;
-        })
+        // const user_client = new faunadb.Client({
+        //   secret: res.secret,
+        // });
+        // user_client.query(
+        //   q.Get(q.Match(q.Index("emp_id"), data.empid))
+        // )
+        // .then(function(resp){
+        //   const respon = {
+        //     statusCode: 201,
+        //     body: JSON.stringify({
+        //       secret: res.secret,
+        //       name: resp.data.name,
+        //     }),
+        //   };
+        //   return respon;
+        // })
+        const respon = {
+          statusCode: 201,
+          body: JSON.stringify({
+            secret: res.secret,
+          }),
+        };
+        return respon;
       })
       .catch(function(error){
         const errorResponse1 = {
