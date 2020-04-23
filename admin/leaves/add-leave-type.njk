@@ -1,0 +1,78 @@
+{% set page_title = "Add Leave Type" %} {% extends "base_admin.njk"%} {% block
+content%}
+<div class="col s12 m12 l6">
+  <div class="card">
+    <div class="card-content">
+      <h4 style="text-align: center;">Add New Department</h4>
+      <br />
+      <div class="row">
+        <form class="col s12" name="chngpwd">
+          <?php if($error){?>
+          <div class="errorWrap" style="display:none"></div>
+          <div class="succWrap" style="display:none"></div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input
+                id="leavetype"
+                type="text"
+                class="validate"
+                autocomplete="off"
+                name="leavetype"
+                required
+              />
+              <label for="leavetype">Leave Type</label>
+            </div>
+            <div class="input-field col s12">
+              <input
+                id="max"
+                type="number"
+                min="5"
+                value="5"
+                autocomplete="off"
+                name="max"
+              />
+              <label for="max">Yearly Allowance</label>
+            </div>
+            <div class="input-field col s12">
+              Event Color
+              <input id="color" type="color" name="color" value="#ffffff" />
+              <br /><br />
+              <p id="trial" style="padding: 10px;">
+                This is how your event will look like
+              </p>
+              <br /><br />
+            </div>
+            <div class="input-field col s12">
+              <textarea
+                id="textarea1"
+                name="description"
+                class="materialize-textarea"
+                name="description"
+                length="500"
+              ></textarea>
+              <label for="deptshortname">Description</label>
+            </div>
+            <div class="input-field col s12">
+              <button
+                type="submit"
+                name="add"
+                class="waves-effect waves-light btn indigo"
+              >
+                ADD
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block add_script %}
+<script>
+  $(document).ready(function () {
+    $("#color").change(function () {
+      $("#trial").css("background-color", $("#color").val());
+    });
+  });
+</script>
+{% endblock %}

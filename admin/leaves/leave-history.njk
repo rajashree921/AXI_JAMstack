@@ -1,0 +1,45 @@
+{% set page_title = "Leave History" %} {% extends "base_admin.njk"%} {% block
+content%}
+<div class="col s12 m12 l12">
+  <div class="card">
+    <div class="card-content">
+      <h4 style="text-align: center;">Leave History</h4>
+      <div class="succWrap" style="display: none;">
+        <strong>SUCCESS</strong> :
+      </div>
+      <table id="example" class="display responsive-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Employee Name</th>
+            <th>Leave Type</th>
+            <th>Posting Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <b>1</b>
+            </td>
+            <td>
+              FirstName LastName(AXI001)
+            </td>
+            <td>LeaveType</td>
+            <td>PostingDate</td>
+            <td>
+              <span style="color: blue;">waiting for approval</span>
+            </td>
+            <td>
+              <button class="waves-effect waves-light btn teal">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block add_script %}
+<script src="/assets/js/pages/table-data.js"></script>
+{% endblock %}

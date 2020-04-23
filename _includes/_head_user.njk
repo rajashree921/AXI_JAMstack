@@ -1,0 +1,37 @@
+<header class="mn-header navbar-fixed">
+    <nav class="black darken-1">
+      <div class="nav-wrapper">
+        <section class="material-design-hamburger navigation-toggle">
+          <a
+            href="#"
+            data-activates="slide-out"
+            class="button-collapse show-on-large material-design-hamburger__icon"
+          >
+            <span class="material-design-hamburger__layer"></span>
+          </a>
+        </section>
+        <img
+        class="left hide-on-small-and-down"
+        src="/assets/images/AXImprove-Full-Logo.png"
+        width="200px"
+      />
+      <img
+        class="left hide-on-med-and-up"
+        src="/assets/images/small.png"
+        height="60px"
+      />
+      &nbsp;&nbsp;&nbsp;
+      <a
+        style="font-size: 22px;"
+        href="/"
+        class="hide-on-small-and-down"
+        id="title"
+        >LEAVE MANAGEMENT SYSTEM</a
+      >
+      <a style="font-size: 22px;" href="/" class="hide-on-med-and-up"
+        >L M S</a
+      >
+      {% block add_admin %}{% endblock %}
+      </div>
+    </nav>
+  </header>

@@ -1,0 +1,37 @@
+{% set page_title = "Add Department" %} 
+{% extends "base_admin.njk"%}
+{% block content%}
+  <div class="col s12 m12 l6">
+    <div class="card">
+      <div class="card-content">
+        <h4 style="text-align:center">Add New Department</h4 >
+        <br>
+          <div class="row">
+            <form class="col s12" name="add-dept">
+              <div class="errorWrap" style="display:none;"><strong>ERROR</strong>: </div>
+              <div class="succWrap" style="display:none;"><strong>SUCCESS</strong>: </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="departmentname" type="text"  class="validate" autocomplete="off" name="departmentname"  required>
+                  <label for="deptname">Department Name</label>
+                </div>
+                <div class="input-field col s12">
+                  <input id="departmentshortname" type="text"  class="validate" autocomplete="off" name="departmentshortname"  required>
+                  <label for="deptshortname">Department Short Name</label>
+                </div>
+                <div class="input-field col s12">
+                  <input id="deptcode" type="text" name="deptcode" class="validate" autocomplete="off" required>
+                  <label for="password">Department Code</label>
+                </div>
+                <div class="input-field col s12">
+                  <button type="submit" name="add" class="waves-effect waves-light btn indigo m-b-xs right">ADD</button>
+                </div>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}		
+{% block add_script %}
+{% endblock %}

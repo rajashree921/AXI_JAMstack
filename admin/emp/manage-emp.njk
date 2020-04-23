@@ -1,0 +1,45 @@
+{% set page_title = "Manage Employees" %} {% extends "base_admin.njk"%} {% block
+content%}
+<div class="col s12 m12 l12">
+  <div class="card">
+    <div class="card-content">
+      <h4 style="text-align: center;">Employees' Info</h4>
+      <div class="succWrap" style="display: none;">
+        <strong>SUCCESS</strong> :
+      </div>
+      <table id="example" class="display responsive-table">
+        <thead>
+          <tr>
+            <th>Sr no</th>
+            <th>Emp Id</th>
+            <th>Full Name</th>
+            <th>Department</th>
+            <th>Status</th>
+            <th>Joining Date</th>
+            <th>Confirmation Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>AXI00x</td>
+            <td>FirstName LastName</td>
+            <td>Department</td>
+            <td><a class="red-text">Not Confirmed</a>
+            </td>
+            <td>RegDate</td>
+            <td>ConfirmDate</td>
+            <td>
+              <i class="material-icons">mode_edit</i>
+              <i class="material-icons">history</i>
+              <i class="material-icons">done</i>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block add_script %}
+<script src="/assets/js/pages/table-data.js"></script>
+{% endblock %}

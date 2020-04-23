@@ -1,0 +1,41 @@
+{% set page_title = "Home" %} 
+{% extends "base_admin.njk"%}
+{% block content%}
+	<div class="col s12 m12 l12">
+		<div class="card">
+			<div class="card-content">
+				<h4 style="text-align:center">Latest Leave Applications</h4 >
+				<table id="example" class="display responsive-table ">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th width="200">Employee Name</th>
+							<th >Leave Type</th>
+							<th>Status</th>
+							<th align="center">Action</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr>
+							<td> <b>1</b></td>
+							<td><a href="./editemployee?empid=1" target="_blank">Sam Morgan(AXI00x)</a></td>
+							<td>Sick Leave</td>
+							<td>
+								<span style="color: blue">waiting for approval</span>
+							</td>
+							<td><a href="./leave-details?leaveid=1" title=" View Details"><i class="material-icons">visibility</i></a>
+							</td><td>
+							<a href="/leave-history?eid=1" title="View Leave History"><i class="material-icons">history</i></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}		
+{% block add_script %}
+<script src="/assets/js/pages/dashboard.js"></script>
+<script src="/assets/js/pages/table-data.js"></script>
+{% endblock %}

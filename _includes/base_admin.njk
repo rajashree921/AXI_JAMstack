@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Title -->
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="UTF-8">
+    <!-- Styles -->
+    <link type="text/css" rel="stylesheet" href="/assets/plugins/materialize/css/materialize.min.css"/>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/assets/plugins/material-preloader/css/materialPreloader.min.css" rel="stylesheet">
+    <link href="/assets/plugins/datatables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    {% block add_css %} {% endblock %}
+    <!-- Theme Styles -->
+    <link href="/assets/css/alpha.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/css/custom.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+  <div class="loader-bg"></div>
+    <div class="loader">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+        <div class="spinner-layer spinner-spinner-teal lighten-1">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+        <div class="spinner-layer spinner-yellow">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+        <div class="spinner-layer spinner-green">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mn-content fixed-sidebar">
+      {% include '_head_admin.njk' %}
+      {% include '_aside_admin.njk' %}
+      <main class="mn-inner">
+        <div class="row">
+          {% block content %} 
+          {% endblock %} 
+        </div>
+      </main>
+    </div>       
+    <!-- Javascripts -->
+    <script src="/assets/plugins/jquery/jquery-2.2.0.min.js"></script>
+    <script src="/assets/plugins/materialize/js/materialize.min.js"></script>
+    <script src="/assets/plugins/material-preloader/js/materialPreloader.min.js"></script>
+    <script src="/assets/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/assets/js/alpha.min.js"></script>
+    {% block add_script %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Title -->
+    <title>ELMS | Admin</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta charset="UTF-8" />
+    <!-- Styles -->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../assets/plugins/materialize/css/materialize.min.css"
+    />
+    <link
+      href="http://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="/assets/plugins/material-preloader/css/materialPreloader.min.css"
+      rel="stylesheet"
+    />
+    <link href="/assets/css/alpha.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/custom.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="loader-bg"></div>
+    <div class="loader">
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+        <div class="spinner-layer spinner-spinner-teal lighten-1">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+        <div class="spinner-layer spinner-yellow">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+        <div class="spinner-layer spinner-green">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="black darken-1">
+      <img
+        class="left hide-on-small-and-down"
+        src="/assets/images/AXImprove-Full-Logo.png"
+        width="200px"
+      />
+      <img
+        class="left hide-on-med-and-up"
+        src="/assets/images/small.png"
+        height="60px"
+      />
+      &nbsp;&nbsp;&nbsp;
+      <a
+        style="font-size: 22px;"
+        href="/"
+        class="hide-on-small-and-down"
+        id="title"
+        >LEAVE MANAGEMENT SYSTEM</a
+      >
+      <a style="font-size: 22px;" href="/" class="hide-on-med-and-up">L M S</a>
+    </nav>
+    <main class="mn-inner">
+      <div class="row">
+        <div class="col s12 m6 l4 offset-l4 offset-m3">
+          <div class="card white darken-1">
+            <div class="card-content">
+              <span
+                class="card-title"
+                style="text-align: center; font-size: 20px;"
+                >HR Login</span
+              >
+              <div class="row">
+                <form class="col s12" name="signin" method="post">
+                  <div class="input-field col s12">
+                    <input
+                      id="username"
+                      type="text"
+                      name="username"
+                      class="validate"
+                      autocomplete="off"
+                      required
+                    />
+                    <label for="email">Username</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <input
+                      id="password"
+                      type="password"
+                      class="validate"
+                      name="password"
+                      autocomplete="off"
+                      required
+                    />
+                    <label for="password">Password</label>
+                  </div>
+                  <div class="col s12 right-align m-t-sm">
+                    <button
+                      type="submit"
+                      name="signin"
+                      class="waves-effect waves-light btn right teal"
+                    >
+                      Sign In
+                      <i class="material-icons right">send</i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Javascripts -->
+    <script src="/assets/plugins/jquery/jquery-2.2.0.min.js"></script>
+    <script src="/assets/plugins/materialize/js/materialize.min.js"></script>
+    <script src="/assets/plugins/material-preloader/js/materialPreloader.min.js"></script>
+    <script src="/assets/plugins/jquery-blockui/jquery.blockui.js"></script>
+    <script src="/assets/js/alpha.min.js"></script>
+  </body>
+</html>

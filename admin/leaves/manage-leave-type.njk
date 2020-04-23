@@ -1,0 +1,40 @@
+{% set page_title = "Manage Leave Type" %} {% extends "base_admin.njk"%} {% block
+content%}
+<div class="col s12 m12 l12">
+  <div class="card">
+    <div class="card-content">
+      <h4 style="text-align: center;">Manage Leave Type</h4>
+      <div class="succWrap" style="display: none;">
+        <strong>SUCCESS</strong> :
+      </div>
+      <table id="example" class="display responsive-table">
+        <thead>
+          <tr>
+            <th>Sr no</th>
+            <th>Leave Type</th>
+            <th>Description</th>
+            <th>Yearly Allowance</th>
+            <th>Event Color</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>LeaveType</td>
+            <td>Description</td>
+            <td>MaxAllowed</td>
+            <td><input type="color" value="#000" disabled></td>
+            <td>
+              <i class="material-icons">mode_edit</i>
+              <i class="material-icons">delete_forever</i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block add_script %}
+<script src="/assets/js/pages/table-data.js"></script>
+{% endblock %}
