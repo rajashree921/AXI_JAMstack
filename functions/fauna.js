@@ -11,7 +11,7 @@ module.exports.handler = async (event) => {
   const data = querystring.parse(event.body);
   const obje ={
     statusCode: 201,
-    body: data
+    body: JSON.stringify(data.action) + " " + typeof(data.action)
   };
   return obje
   // switch (data.action) {
