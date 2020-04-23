@@ -179,8 +179,9 @@
               password: $('#password').val(),
             },
             function (data, status) {
-              sessionStorage.setItem("fauna_emp_secret",data.secret);
-              sessionStorage.setItem("name",data.name);
+              console.log(data);
+              {# sessionStorage.setItem("fauna_emp_secret",data.secret);
+              sessionStorage.setItem("name",data.name); #}
               if (status==="success"){
                 window.location.href=  "../home";
               }
