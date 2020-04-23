@@ -16,24 +16,31 @@ module.exports.handler = async (event) => {
           password: data.password,
         })
       )
-      .then(function(emp_res){
-        const user_client = new faunadb.Client({
-          secret: emp_res.secret,
-        });
-        user_client.query(
-          q.Get(q.Match(q.Index("emp_id"), data.empid))
-        )        
-      })
-      .then(function(emp_resp){
+      .then(response =>{
         const emp_respon = {
-          statusCode: 201,
-          body: JSON.stringify({
-            secret: emp_res.secret,
-            name: emp_resp.data.name,
-          }),
+        statusCode: 201,
+        body: JSON.stringify(response),
         };
         return emp_respon;
-      })
+      }) 
+      // .then(function(emp_res){
+      //   const user_client = new faunadb.Client({
+      //     secret: emp_res.secret,
+      //   });
+      //   user_client.query(
+      //     q.Get(q.Match(q.Index("emp_id"), data.empid))
+      //   )        
+      // })
+      // .then(function(emp_resp){
+      //   const emp_respon = {
+      //     statusCode: 201,
+      //     body: JSON.stringify({
+      //       secret: emp_res.secret,
+      //       name: emp_resp.data.name,
+      //     }),
+      //   };
+      //   return emp_respon;
+      // })
       .catch(function(error){
         const errorResponse1 = {
           statusCode: 400,
