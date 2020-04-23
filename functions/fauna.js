@@ -16,12 +16,12 @@ module.exports.handler = async (event) => {
           password: data.password,
         })
       )
-      .then(response =>{
-        const emp_respon = {
-        statusCode: 201,
-        body: JSON.stringify(response),
+      .then(function(respp){
+        const resppp = {
+          statusCode: 201,
+          body: JSON.stringify(respp)
         };
-        return emp_respon;
+        return resppp;
       }) 
       // .then(function(emp_res){
       //   const user_client = new faunadb.Client({
