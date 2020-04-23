@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <script type="text/javascript">
-  if (!sessionStorage["fauna_emp_secret"]) {
+  if (!sessionStorage.hasOwnProperty("fauna_emp_secret") {
     window.replace("/login");
   }
   </script>

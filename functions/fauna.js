@@ -16,30 +16,23 @@ module.exports.handler = async (event) => {
           password: data.password,
         })
       )
-      .then(function(res){
-        // const user_client = new faunadb.Client({
-        //   secret: res.secret,
-        // });
-        // user_client.query(
-        //   q.Get(q.Match(q.Index("emp_id"), data.empid))
-        // )
-        // .then(function(resp){
-        //   const respon = {
-        //     statusCode: 201,
-        //     body: JSON.stringify({
-        //       secret: res.secret,
-        //       name: resp.data.name,
-        //     }),
-        //   };
-        //   return respon;
-        // })
-        const respon = {
-          statusCode: 201,
-          body: JSON.stringify({
-            secret: res.secret,
-          }),
-        };
-        return respon;
+      .then(function(emp_res){
+        const user_client = new faunadb.Client({
+          secret: emp_res.secret,
+        });
+        user_client.query(
+          q.Get(q.Match(q.Index("emp_id"), data.empid))
+        )
+        .then(function(emp_resp){
+          const emp_respon = {
+            statusCode: 201,
+            body: JSON.stringify({
+              secret: emp_res.secret,
+              name: emp_resp.data.name,
+            }),
+          };
+          return emp_respon;
+        })
       })
       .catch(function(error){
         const errorResponse1 = {
@@ -55,22 +48,22 @@ module.exports.handler = async (event) => {
           password: data.password,
         })
       )
-      .then(function(res){
-        const user_client = new faunadb.Client({
-          secret: res.secret,
+      .then(function(admin_res){
+        const admin_client = new faunadb.Client({
+          secret: admin_res.secret,
         });
-        user_client.query(
+        admin_client.query(
           q.Get(q.Match(q.Index("admin_id"), data.empid))
         )
-        .then(function(respo){
-          const response = {
+        .then(function(admin_respo){
+          const admin_response = {
             statusCode: 201,
             body: JSON.stringify({
-              secret: res.secret,
-              data: respo.data
+              secret: admin_res.secret,
+              data: admin_respo.data
             }),
           };
-          return response;
+          return admin_response;
         })
       })
       .catch(function(error){
