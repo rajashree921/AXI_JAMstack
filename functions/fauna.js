@@ -24,22 +24,22 @@ module.exports.handler = async (event) => {
           q.Get(q.Match(q.Index("emp_id"), data.empid))
         )
         .then(function(resp){
-          const response = {
+          const respon = {
             statusCode: 201,
             body: JSON.stringify({
               secret: res.secret,
               name: resp.data.name,
             }),
           };
-          return response;
+          return respon;
         })
       })
       .catch(function(error){
-        const errorResponse = {
+        const errorResponse1 = {
           statusCode: 400,
           body: JSON.stringify(error),
         };
-        return errorResponse;
+        return errorResponse1;
       });
     break;
     case "login_admin":
@@ -55,28 +55,28 @@ module.exports.handler = async (event) => {
         user_client.query(
           q.Get(q.Match(q.Index("admin_id"), data.empid))
         )
-        .then(function(response){
-          const response = {
+        .then(function(respo){
+          const respo = {
             statusCode: 201,
             body: JSON.stringify({
               secret: res.secret,
             }),
           };
-          return response;
+          return respo;
         })
       })
       .catch(function(error){
-        const errorResponse = {
+        const errorResponse2 = {
           statusCode: 400,
           body: JSON.stringify(error),
         };
-        return errorResponse;
+        return errorResponse2;
       });
     default:
-      const errorResponse = {
+      const errorResponse3 = {
         statusCode: 400,
         body: "default case",
       };
-      return errorResponse;
+      return errorResponse3;
   }
 };
