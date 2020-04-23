@@ -9,11 +9,11 @@ const client = new faunadb.Client({
 
 module.exports.handler = async (event) => {
   const data = querystring.parse(event.body);
-  const obje ={
+  const response ={
     statusCode: 201,
-    body: JSON.stringify(data.action) + " " + typeof(data.action)
-  };
-  return obje
+    body: JSON.stringify(data) + " " + typeof(data.action)
+  }
+  return response;
   // switch (data.action) {
   //   case "login_emp":
   //     try {
