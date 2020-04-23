@@ -66,11 +66,11 @@ module.exports.handler = async (event) => {
       };
       return errorResponse;
     }
-  } else {
-    const def = {
-      statusCode: 201,
-      body: data.action,
-    };
-    return def;
   }
+  const local_action = data.action;
+  const def = {
+    statusCode: 201,
+    body: local_action,
+  };
+  return def;
 };
