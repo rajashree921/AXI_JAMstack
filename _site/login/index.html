@@ -3,7 +3,6 @@
   <head>
     <!-- Title -->
     <title>ELMS | Home Page</title>
-
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -110,7 +109,7 @@
                 style="text-align: center; font-size: 20px;"
                 >Employee Login</span
               >
-              <!--<div class="errorWrap"><strong>Error</strong> : </div> -->
+              <div class="errorWrap" style="display:none"><strong>Error</strong> : </div>
               <div class="row">
                 <form
                   class="col s12"
@@ -172,29 +171,18 @@
       $(document).ready(function () {
         $("form").submit(function (e) {
           e.preventDefault();
-          // var form = document.querySelector("form");
-          // var formData = new FormData(form);
-          // var xhr = new XMLHttpRequest();
-          // xhr.onreadystatechange = function () {
-          //   if (this.readyState == 4 && this.status == 200) {
-          //     console.log(this.response);
-          //   }
-          // };
-          // xhr.open("POST", "/.netlify/functions/login", true);
-          // xhr.send(formData);
-
           $.post(
             "/.netlify/functions/fauna",
             {
-              action: "login",
+              action: "login_emp",
               empid: $('#empid').val(),
               password: $('#password').val(),
             },
             function (data, status) {
-              sessionStorage.setItem("client_secret",data.secret);
+              sessionStorage.setItem("fauna_emp_secret",data.secret);
               sessionStorage.setItem("name",data.name);
               if (status==="success"){
-                window.location.replace("/home")
+                window.location.replace("../home")
               }
             }
           );

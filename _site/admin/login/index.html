@@ -153,5 +153,25 @@
     <script src="/assets/plugins/material-preloader/js/materialPreloader.min.js"></script>
     <script src="/assets/plugins/jquery-blockui/jquery.blockui.js"></script>
     <script src="/assets/js/alpha.min.js"></script>
+    $(document).ready(function () {
+      $("form").submit(function (e) {
+        e.preventDefault();
+        $.post(
+          "/.netlify/functions/fauna",
+          {
+            action: "login_admin",
+            empid: $('#username').val(),
+            password: $('#password').val(),
+          },
+          function (data, status) {
+            sessionStorage.setItem("fauna_admin_secret",data.secret);
+            if (status==="success"){
+              window.location.replace("../home")
+            }
+          }
+        );
+      });
+    });
+    </script>
   </body>
 </html>

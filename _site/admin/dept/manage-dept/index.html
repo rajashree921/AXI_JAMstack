@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+  <script type="text/javascript">
+  if (!sessionStorage["fauna_admin_secret"]) {
+    window.replace("/admin/login");
+  }
+  </script>
   <head>
     <!-- Title -->
     <title></title>
@@ -102,20 +107,31 @@
       
 <ul class="right col s9 m3 nav-right-menu">
   <li class="hide-on-small-and-down">
-    <a href="javascript:void(0)" data-activates="dropdown1" class="dropdown-button dropdown-right show-on-large"><i class="material-icons">notifications_none</i>
-      <span class="badge">1</span>
+    <a
+      href="javascript:void(0)"
+      data-activates="dropdown1"
+      class="dropdown-button dropdown-right show-on-large"
+      ><i class="material-icons">notifications_none</i>
+      <span class="badge">2</span>
     </a>
   </li>
 </ul>
 <ul id="dropdown1" class="dropdown-content notifications-dropdown">
   <li class="notificatoins-dropdown-container">
-    <ul id = "notif-list">
+    <ul id="notif-list">
       <li class="notification-drop-title">Notifications</li>
-                    <li>
+      <li>
         <a href="/leave-details?leave-id=1">
-          <div class="notification" >
-            <div class="notification-icon circle cyan"><i class="material-icons">done</i></div>
-            <div class="notification-text"><p><b>Sam Morgan<br />(AXI00x)</b> applied for leave</p><span>at PostingDate</span></div>
+          <div class="notification">
+            <div class="notification-icon circle cyan">
+              <i class="material-icons">done</i>
+            </div>
+            <div class="notification-text">
+              <p>
+                <b>Sam Morgan<br />(AXI00x)</b> applied for leave
+              </p>
+              <span>at PostingDate</span>
+            </div>
           </div>
         </a>
       </li>
@@ -123,8 +139,14 @@
       <li>
         <a href="/manage-employee">
           <div class="notification">
-            <div class="notification-icon circle red"><i class="material-icons">done</i></div>
-            <div class="notification-text"><p><b>Sam Morgan<br />(AXI00x);?>)</b> has been working for over 6 months</p></div>
+            <div class="notification-icon circle red">
+              <i class="material-icons">done</i>
+            </div>
+            <div class="notification-text">
+              <p>
+                <b>Sam Morgan<br />(AXI00x)</b> has been working for over 6 months
+              </p>
+            </div>
           </div>
         </a>
       </li>
@@ -175,7 +197,7 @@
 				</div>
 			</li>
 			<li class="no-padding">
-				<a class="waves-effect waves-grey" href="/admin/leaves/leave-history"><i class="material-icons">desktop_windows</i>Leave Management</a>
+				<a class="waves-effect waves-grey" href="/admin/leaves/leave-history"><i class="material-icons">desktop_windows</i>Leave History</a>
 			</li>
 			<li class="no-padding">
 				<a class="waves-effect waves-grey" href="#"><i class="material-icons">exit_to_app</i>Sign Out</a>
@@ -196,7 +218,6 @@
             <tr>
               <th>Sr no</th>
               <th>Dept Name</th>
-              <th>Dept Short Name</th>
               <th>Dept Code</th>
               <th>Action</th>
             </tr>
@@ -206,7 +227,6 @@
             <tr>
               <td>1</td>
               <td>DepartmentName</td>
-              <td>DepartmentShortName</td>
               <td>DepartmentCode</td>
               <td><i class="material-icons">delete_forever</i></td>
             </tr>

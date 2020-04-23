@@ -23,12 +23,12 @@ module.exports.handler = async (event) => {
         user_client.query(
           q.Get(q.Match(q.Index("emp_id"), data.empid))
         )
-        .then(function(response){
+        .then(function(resp){
           const response = {
             statusCode: 201,
             body: JSON.stringify({
               secret: res.secret,
-              name: response.data.name,
+              name: resp.data.name,
             }),
           };
           return response;
