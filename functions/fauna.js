@@ -63,13 +63,14 @@ module.exports.handler = async (event) => {
           q.Get(q.Match(q.Index("admin_id"), data.empid))
         )
         .then(function(respo){
-          const respo = {
+          const response = {
             statusCode: 201,
             body: JSON.stringify({
               secret: res.secret,
+              data: respo.data
             }),
           };
-          return respo;
+          return response;
         })
       })
       .catch(function(error){
