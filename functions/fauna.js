@@ -10,50 +10,68 @@ const client = new faunadb.Client({
 module.exports.handler = async (event) => {
   const data = querystring.parse(event.body);
   switch (data.action) {
-    case "login":
-      try {
-        const queryResponse1 = await client.query(
-          q.Login(q.Match(q.Index("emp_by_id"), data.empid), {
-            password: data.password,
-          })
-        );
-
-        try {
-          const user_client = new faunadb.Client({
-            secret: queryResponse1.secret,
-          });
-          const queryResponse2 = await user_client.query(
-            q.Get(q.Match(q.Index("emp_by_id"), data.empid))
-          );
+    case "login_emp":
+      client.query(
+        q.Login(q.Match(q.Index("emp_id"), data.empid), {
+          password: data.password,
+        })
+      )
+      .then(function(res){
+        const user_client = new faunadb.Client({
+          secret: res.secret,
+        });
+        user_client.query(
+          q.Get(q.Match(q.Index("emp_id"), data.empid))
+        )
+        .then(function(response){
           const response = {
             statusCode: 201,
             body: JSON.stringify({
-              secret: queryResponse1.secret,
-              name: queryResponse2.data.FirstName,
+              secret: res.secret,
+              name: response.data.name,
             }),
           };
           return response;
-        } catch (error) {
-          const errorResponse = {
-            statusCode: 400,
-            body: JSON.stringify(error) + "error2",
-          };
-          return errorResponse;
-        }
-      } catch (error) {
+        })
+      })
+      .catch(function(error){
         const errorResponse = {
           statusCode: 400,
-          body:
-            JSON.stringify(error) +
-            " error1 " +
-            data.empid +
-            " " +
-            data.password,
+          body: JSON.stringify(error),
         };
         return errorResponse;
-      } finally {
-        break;
-      }
+      });
+    break;
+    case "login_admin":
+      client.query(
+        q.Login(q.Match(q.Index("admin_id"), data.empid), {
+          password: data.password,
+        })
+      )
+      .then(function(res){
+        const user_client = new faunadb.Client({
+          secret: res.secret,
+        });
+        user_client.query(
+          q.Get(q.Match(q.Index("admin_id"), data.empid))
+        )
+        .then(function(response){
+          const response = {
+            statusCode: 201,
+            body: JSON.stringify({
+              secret: res.secret,
+            }),
+          };
+          return response;
+        })
+      })
+      .catch(function(error){
+        const errorResponse = {
+          statusCode: 400,
+          body: JSON.stringify(error),
+        };
+        return errorResponse;
+      });
     default:
       const errorResponse = {
         statusCode: 400,
