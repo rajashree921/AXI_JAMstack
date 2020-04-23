@@ -11,76 +11,63 @@ module.exports.handler = async (event) => {
   const data = querystring.parse(event.body);
   switch (data.action) {
     case "login_emp":
-      client.query(
-        q.Login(q.Match(q.Index("emp_id"), data.empid), {
-          password: data.password,
-        })
-      )
-      .then(function(respp){
-        const resppp = {
-          statusCode: 201,
-          body: JSON.stringify(respp)
-        };
-        return resppp;
-      }) 
-      // .then(function(emp_res){
-      //   const user_client = new faunadb.Client({
-      //     secret: emp_res.secret,
-      //   });
-      //   user_client.query(
-      //     q.Get(q.Match(q.Index("emp_id"), data.empid))
-      //   )        
-      // })
-      // .then(function(emp_resp){
-      //   const emp_respon = {
-      //     statusCode: 201,
-      //     body: JSON.stringify({
-      //       secret: emp_res.secret,
-      //       name: emp_resp.data.name,
-      //     }),
-      //   };
-      //   return emp_respon;
-      // })
-      .catch(function(error){
-        const errorResponse1 = {
-          statusCode: 400,
-          body: JSON.stringify(error),
-        };
-        return errorResponse1;
-      });
-    break;
-    case "login_admin":
-      client.query(
-        q.Login(q.Match(q.Index("admin_id"), data.empid), {
-          password: data.password,
-        })
-      )
-      .then(function(admin_res){
-        const admin_client = new faunadb.Client({
-          secret: admin_res.secret,
+      try {
+        const queryResponse1 = await client.query(
+          q.Login(q.Match(q.Index("emp_id"), data.empid), {
+            password: data.password,
+          })
+        );
+        const user_client = new faunadb.Client({
+          secret: queryResponse1.secret,
         });
-        admin_client.query(
-          q.Get(q.Match(q.Index("admin_id"), data.empid))
-        )
-        
-      })
-      .then(function(admin_respo){
-        const admin_response = {
+        const queryResponse2 = await user_client.query(
+          q.Get(q.Match(q.Index("emp_by_id"), data.empid))
+        );
+        const response = {
           statusCode: 201,
           body: JSON.stringify({
-            secret: admin_res.secret,
-            data: admin_respo.data
+            secret: queryResponse1.secret,
+            data: queryResponse2.data,
           }),
         };
-        return admin_response;
-      })
-      .catch(function(error){
-        const errorResponse2 = {
+        return response;
+      } catch (error) {
+        const errorResponse = {
           statusCode: 400,
           body: JSON.stringify(error),
         };
-        return errorResponse2;
-      });
+        return errorResponse;
+      }
+      break;
+    case "login_admin":
+      try {
+        const queryResponse3 = await client.query(
+          q.Login(q.Match(q.Index("emp_id"), data.empid), {
+            password: data.password,
+          })
+        );
+        const admin_client = new faunadb.Client({
+          secret: queryResponse3.secret,
+        });
+        const queryResponse4 = await admin_client.query(
+          q.Get(q.Match(q.Index("emp_by_id"), data.empid))
+        );
+        const response = {
+          statusCode: 201,
+          body: JSON.stringify({
+            secret: queryResponse3.secret,
+            data: queryResponse4.data,
+          }),
+        };
+        return response;
+      } catch (error) {
+        const errorResponse = {
+          statusCode: 400,
+          body: JSON.stringify(error),
+        };
+        return errorResponse;
+      }
+      break;
     default:
       const errorResponse3 = {
         statusCode: 400,
