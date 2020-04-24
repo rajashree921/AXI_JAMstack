@@ -49,13 +49,13 @@ module.exports.handler = async (event) => {
         secret: queryResponse3.secret,
       });
       const queryResponse4 = await admin_client.query(
-        q.Get(q.Match(q.Index("admin_id"), data.empid))
+        q.Get(q.Match(q.Index("emp_id"), "AXI001"))
       );
       const response = {
         statusCode: 201,
         body: JSON.stringify({
           qR3: queryResponse3,
-          qR4: queryResponse4
+          // qR4: queryResponse4
         }),
       };
       return response;

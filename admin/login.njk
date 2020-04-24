@@ -165,8 +165,9 @@
             password: $('#password').val(),
           },
           function (data, status) {
-            sessionStorage.setItem("fauna_admin_secret",data.secret);
-            {# if (status==="success"){
+            console.log(data);
+            {# sessionStorage.setItem("fauna_admin_secret",data.secret);
+             if (status==="success"){
               window.location.replace("../home")
             } #}
           }
