@@ -96,7 +96,7 @@ content%}
 </div>
 {% endblock %} {% block add_script %}
 <script>
-  function checkAvailabilityEmailid() {
+  {# function checkAvailabilityEmailid() {
     $("#loaderIcon").show();
     jQuery.ajax({
       url: "check_availability.php",
@@ -108,12 +108,12 @@ content%}
       },
       error:function (){}
     });
-  }
+  } #}
 
   $(document).ready(function(){
     $("form").submit(function (e) {
-      e.PreventDefault();
-      if(!$("#department").val()){
+      e.preventDefault();
+      {# if(!$("#department").val()){
         alert('Please select Department');
         return false;
       }if(!$("#gender").val()){
@@ -126,7 +126,7 @@ content%}
         alert("Password and Confirm Password Fields do not match !!");
         $('#confirm').focus();
         return false;
-      }
+      } #}
       $.post(
           "/.netlify/functions/fauna",
           {

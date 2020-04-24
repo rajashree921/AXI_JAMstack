@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <script type="text/javascript">
-  console.log(if(sessionStorage["fauna_admin_secret"]));
+  console.log(!(sessionStorage["fauna_admin_secret"]));
   if (!sessionStorage["fauna_admin_secret"]) {
-    window.location = "/admin/login";
+    window.location.replace("/admin/login");
   }
   </script>
   <head>
