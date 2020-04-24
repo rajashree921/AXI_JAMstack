@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <script type="text/javascript">
+  console.log(sessionStorage["fauna_admin_secret"]);
   if (!sessionStorage["fauna_admin_secret"]) {
     window.replace("/admin/login");
   }

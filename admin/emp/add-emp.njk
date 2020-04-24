@@ -111,7 +111,7 @@ content%}
   }
 
   $(document).ready(function(){
-    $(document).on('submit', '#addemp', function(e){
+    $("form").submit(function (e) {
       e.PreventDefault();
       if(!$("#department").val()){
         alert('Please select Department');
@@ -127,7 +127,24 @@ content%}
         $('#confirm').focus();
         return false;
       }
-      return true;
+      $.post(
+          "/.netlify/functions/fauna",
+          {
+            action: "add_emp",
+            name: JSON.stringify({
+              firstName: $("#firstName"),
+              lastName: $("lastName")
+            }),
+            password: $('#password').val(),
+            secret: sessionStorage.getItem("fauna_admin_secret")
+          },
+          function (data, status) {
+            sessionStorage.setItem("fauna_admin_secret",data.secret);
+            if (status==="success"){
+              window.location.replace("../home")
+            }
+          }
+        );
     });
   });
 </script>
