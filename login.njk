@@ -183,9 +183,9 @@
               data_obj = JSON.parse(data)
               sessionStorage.setItem("fauna_emp_secret",data_obj.secret);
               sessionStorage.setItem("name",data_obj.data.name.FirstName);
-              if (status==="success"){
+              {# if (status==="success"){
                 window.location.href=  "../home";
-              }
+              } #}
             }
           );
         });
