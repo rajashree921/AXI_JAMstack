@@ -45,18 +45,17 @@ module.exports.handler = async (event) => {
           password: data.password,
         })
       );
-      // const admin_client = new faunadb.Client({
-      //   secret: queryResponse3.secret,
-      // });
-      // const queryResponse4 = await admin_client.query(
-      //   q.Get(q.Match(q.Index("admin_id"), data.empid))
-      // );
+      const admin_client = new faunadb.Client({
+        secret: queryResponse3.secret,
+      });
+      const queryResponse4 = await admin_client.query(
+        q.Get(q.Match(q.Index("admin_id"), data.empid))
+      );
       const response = {
         statusCode: 201,
         body: JSON.stringify({
-          // secret: queryResponse3.secret,
-          // data: queryResponse4.data,
-          queryResponse3
+          qR3: queryResponse3,
+          qR4: queryResponse4
         }),
       };
       return response;
